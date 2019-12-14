@@ -1,0 +1,180 @@
+[
+    {
+       "id":"c1a80401.face38",
+       "type":"tab",
+       "label":"Temperature sensor",
+       "disabled":false,
+       "info":""
+    },
+    {
+       "id":"9e8328ba.2421c8",
+       "type":"arduino in",
+       "z":"c1a80401.face38",
+       "name":"Thermo In",
+       "pin":"9",
+       "state":"ANALOG",
+       "arduino":"199cb671.8f3c2a",
+       "x":80,
+       "y":160,
+       "wires":[
+          [
+             "34cfcf17.c533",
+             "ebb645d7.a3c878"
+          ]
+       ]
+    },
+    {
+       "id":"34cfcf17.c533",
+       "type":"debug",
+       "z":"c1a80401.face38",
+       "d":true,
+       "name":"",
+       "active":true,
+       "tosidebar":true,
+       "console":true,
+       "tostatus":false,
+       "complete":"payload",
+       "targetType":"msg",
+       "x":120,
+       "y":260,
+       "wires":[
+ 
+       ]
+    },
+    {
+       "id":"ebb645d7.a3c878",
+       "type":"function",
+       "z":"c1a80401.face38",
+       "name":"Init Celsius",
+       "func":"var code = msg.payload;\nvar celsius = 0;\n\nif (code <= 289) {\n    celsius = 5 + (code - 289) / 9.82;\n  }\n  if (code > 289 && code <= 342) {\n    celsius = 10 + (code - 342) / 10.60;\n  }\n  if (code > 342 && code <= 398) {\n    celsius = 15 + (code - 398) / 11.12;\n  }\n  if (code > 398 && code <= 455) {\n    celsius = 20 + (code - 455) / 11.36;\n  }\n  if (code > 455 && code <= 512) {\n    celsius = 25 + (code - 512) / 11.32;\n  }\n  if (code > 512 && code <= 566) {\n    celsius = 30 + (code - 566) / 11.00;\n  }\n  if (code > 566 && code <= 619) {\n    celsius = 35 + (code - 619) / 10.44;\n  }\n  if (code > 619 && code <= 667) {\n    celsius = 40 + (code - 667) / 9.73;\n  }\n  if (code > 667) {\n    celsius = 45 + (code - 712) / 8.90;\n  }\n\nmsg.payload =  celsius;\nreturn msg;",
+       "outputs":1,
+       "noerr":0,
+       "x":270,
+       "y":160,
+       "wires":[
+          [
+             "ec15f2c1.1c86f"
+          ]
+       ]
+    },
+    {
+       "id":"7b630fef.561db",
+       "type":"debug",
+       "z":"c1a80401.face38",
+       "name":"celsius",
+       "active":true,
+       "tosidebar":true,
+       "console":true,
+       "tostatus":false,
+       "complete":"payload",
+       "targetType":"msg",
+       "x":900,
+       "y":100,
+       "wires":[
+ 
+       ]
+    },
+    {
+       "id":"ec15f2c1.1c86f",
+       "type":"delay",
+       "z":"c1a80401.face38",
+       "name":"",
+       "pauseType":"rate",
+       "timeout":"10",
+       "timeoutUnits":"seconds",
+       "rate":"1",
+       "nbRateUnits":"5",
+       "rateUnits":"second",
+       "randomFirst":"1",
+       "randomLast":"5",
+       "randomUnits":"seconds",
+       "drop":true,
+       "x":460,
+       "y":160,
+       "wires":[
+          [
+             "cb13c373.fa734",
+             "907a6aa3.a07968"
+          ]
+       ]
+    },
+    {
+       "id":"cb13c373.fa734",
+       "type":"function",
+       "z":"c1a80401.face38",
+       "name":"Round fahrenheit",
+       "func":"var code = msg.payload;\n\nfahrenheit = code * 1.8 + 32;\n\nmsg.payload = parseFloat(fahrenheit).toFixed(1)\nreturn msg;",
+       "outputs":1,
+       "noerr":0,
+       "x":700,
+       "y":220,
+       "wires":[
+          [
+             "31f9f50a.1a468a"
+          ]
+       ]
+    },
+    {
+       "id":"31f9f50a.1a468a",
+       "type":"debug",
+       "z":"c1a80401.face38",
+       "name":"fahrenheit",
+       "active":true,
+       "tosidebar":true,
+       "console":true,
+       "tostatus":false,
+       "complete":"payload",
+       "targetType":"msg",
+       "x":910,
+       "y":220,
+       "wires":[
+ 
+       ]
+    },
+    {
+       "id":"907a6aa3.a07968",
+       "type":"function",
+       "z":"c1a80401.face38",
+       "name":"Round Celsius",
+       "func":"var celsius = msg.payload ;\n\nmsg.payload =  parseFloat(celsius).toFixed(1);\n\nreturn msg;",
+       "outputs":1,
+       "noerr":0,
+       "x":700,
+       "y":100,
+       "wires":[
+          [
+             "7b630fef.561db"
+          ]
+       ]
+    },
+    {
+       "id":"dfc312f4.097ba",
+       "type":"comment",
+       "z":"c1a80401.face38",
+       "name":"Curtis Spence, Spen0203@algonquinlive.com, 040 855 320,  Hybrid 1 Thermoresistor",
+       "info":"Lab 8 Toggle tricolor LED",
+       "x":290,
+       "y":20,
+       "wires":[
+ 
+       ]
+    },
+    {
+       "id":"332fac02.984524",
+       "type":"comment",
+       "z":"c1a80401.face38",
+       "name":"Done in the cold A building",
+       "info":"",
+       "x":170,
+       "y":60,
+       "wires":[
+ 
+       ]
+    },
+    {
+       "id":"199cb671.8f3c2a",
+       "type":"arduino-board",
+       "z":"",
+       "device":"COM5"
+    }
+ ]
