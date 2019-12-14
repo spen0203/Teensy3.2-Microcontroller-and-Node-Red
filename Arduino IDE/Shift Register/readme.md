@@ -1,3 +1,2 @@
-# Using Two Shift Registers 
+# Using Pot to control LED intensity
 
-Using Two Shift Registers to power 8 LEDs in a row
