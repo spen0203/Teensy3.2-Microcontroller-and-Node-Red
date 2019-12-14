@@ -1,8 +1,10 @@
 # TriColor Led Using Node-Red
 
-Using Node-Reds built in dashboard control a Tri-Color LED.
-    - Json Flow File
-    - Image of Flow
-    - Image of Dashboard Controller Using Color Wheel
+Using Node-Reds built in dashboard control a Tri-Color LED. <br>
+    - Json Flow File<br>
+    - Image of Flow<br>
+    - Image of Dashboard Controller Using Color Wheel<br>
 
-    ![Image of Flow](ControllerDashboard.PNG)
+![Image of Flow](NodeRedFlow.PNG)
+
+![Image of Flow](ControllerDashboard.PNG)
