@@ -8,6 +8,6 @@ Using Node-Reds built in dashboard Track the temperature of a room. <br>
 
 ![Image of Flow](NodeRedFlow.PNG)
 
-<h3> Image of ColorWheel Controller</h3>
+<h3> Image of Temperature DashBoard</h3>
 
 ![Image of Flow](TemperatureDashBoard.PNG)
